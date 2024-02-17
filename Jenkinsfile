@@ -37,7 +37,7 @@ pipeline {
                 // Create Docker container from the built image
             }
         }
-          stage("Clone/Setup Robot"){
+        stage("Clone/Setup Robot"){
             agent {label "test"} 
             steps{
                 dir('./robot-test/'){
@@ -77,13 +77,23 @@ pipeline {
                 }
             }
         }
-        stage("Push image ") {
+        stage("Pull image ") {
              agent {
                     label "pre-prod"
                 }
             steps {
-               
-            }
+                withCredentials(
+                [usernamePassword(
+                    credentialsId: "656e0d84-f8fd-43ff-bca3-7e570bf3cc42",
+                    passwordVariable: "gitlabPassword",
+                    usernameVariable: "gitlabUser"
+                )]
+            ){
+                    sh "docker login -u ${gitlabUser} -p ${gitlabPassword} registry.gitlab.com"
+                    sh "docker pull ${IMAGE_NAME}"
         }
+        }
+
     }
+}
 }
