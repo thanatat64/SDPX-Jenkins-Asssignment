@@ -4,7 +4,7 @@ app = FastAPI()
 
 @app.get("/getcode")
 async def root():
-    return {"message": "Softdev Inpractice dev"}
+    return {"message": "Softdev Inpractice devza"}
 
 @app.get("/plus/{num1}/{num2}")
 async def root(num1: int, num2: int):
