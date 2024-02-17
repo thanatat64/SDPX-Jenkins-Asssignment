@@ -6,6 +6,7 @@ pipeline {
 
         stage('Run Unit Test') {
             steps {
+                sh 'pip install --no-cache-dir --upgrade -r requirements.txt '
                 sh 'python3 unit_test.py'
                 // Assumes unit_test.py exists in the root directory and contains your unit tests
             }
