@@ -27,6 +27,7 @@ pipeline {
         }
           stage('Run Robot Tests') {
             steps {
+                sh 'curl 192.168.88.5'
                 sh 'robot test_plus.robot'
                 // Assumes test_plus.robot exists in the root directory and contains your Robot Framework tests
             }
