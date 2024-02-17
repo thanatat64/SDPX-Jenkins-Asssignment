@@ -27,7 +27,7 @@ pipeline {
         }
           stage('Run Robot Tests') {
             steps {
-                sh 'curl www.google.com'
+                sh 'curl http://192.168.88.1/Main_Login.asp'
                 sh 'robot test_plus.robot'
                 // Assumes test_plus.robot exists in the root directory and contains your Robot Framework tests
             }
