@@ -77,7 +77,7 @@ pipeline {
                 }
             }
         }
-        stage("Pull image ") {
+        stage("Pull image") {
              agent {
                     label "pre-prod"
                 }
@@ -91,9 +91,10 @@ pipeline {
             ){
                     sh "docker login -u ${gitlabUser} -p ${gitlabPassword} registry.gitlab.com"
                     sh "docker pull ${IMAGE_NAME}"
+                    sh "docker build ${IMAGE_NAME}"
+                    sh "docker run -d -p 8000:8000 --name simple-api-container ${IMAGE_NAME}"
         }
         }
-
     }
 }
 }
