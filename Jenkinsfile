@@ -20,8 +20,6 @@ pipeline {
                     label "test"
                 }
             steps {
-                sh 'docker stop simple-api-container'
-                sh 'docker rm simple-api-container'
                 sh 'docker build -t simple-api .'
                 // Build Docker image using provided Dockerfile
             }
@@ -89,7 +87,7 @@ pipeline {
             ){
                     sh "docker login -u ${gitlabUser} -p ${gitlabPassword} registry.gitlab.com"
                     sh "docker pull ${IMAGE_NAME}"
-                    sh "docker run -d -p 8000:8000 --name simple-api-container ${IMAGE_NAME}"
+                    sh "docker run -d -p 8000:8000 ${IMAGE_NAME}"
         }
         }
     }
