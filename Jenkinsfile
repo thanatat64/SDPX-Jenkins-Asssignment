@@ -13,13 +13,13 @@ pipeline {
         }
         stage('Create Images of Simple API') {
             steps {
-                sh 'docker build -t registry.gitlab.com/softdev3430402/softdevjenkins/simple-api-image .'
+                sh 'sudo docker build -t docker build -t simple-api .'
                 // Build Docker image using provided Dockerfile
             }
         }
         stage('Create Container of Simple API') {
             steps {
-                sh 'docker run -d -p 8080:80 --name simple-api-container registry.gitlab.com/softdev3430402/softdevjenkins/simple-api-image'
+                sh 'docker run -d -p 8000:8000 --name simple-api-container simple-api'
                 // Create Docker container from the built image
             }
         }
