@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Clone simple-api') {
             steps {
-                sh 'git clone https://gitlab.com/softdev3430402/softdevjenkins.git'
+                sh 'ssh git@gitlab.com'
+                sh 'git clone git@gitlab.com:softdev3430402/softdevjenkins.git'
             }
         }
     }
