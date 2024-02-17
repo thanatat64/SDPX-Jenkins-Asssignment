@@ -37,18 +37,28 @@ pipeline {
                 // Create Docker container from the built image
             }
         }
-          stage('Run Robot Tests') {
-            agent {
-                    label "test"
+          stage("Clone/Setup Robot"){
+            agent {label "test"} 
+            steps{
+                dir('./robot-test/'){
+                    git branch: 'main', credentialsId: '656e0d84-f8fd-43ff-bca3-7e570bf3cc42',url: 'https://gitlab.com/softdev3430402/softdevrepo.git'
                 }
-            steps {
-                sh 'curl http://192.168.88.1/Main_Login.asp'
-                sh 'curl http://192.168.88.5:8000/getcode'
-                sh 'robot test_plus.robot'
-                // Assumes test_plus.robot exists in the root directory and contains your Robot Framework tests
+                echo "clone done!"
+            }
+        }
+
+        stage("Run Robot") {
+            agent {label "test"} 
+            steps{
+                // sh "pwd"
+                // sh "ls"
+                sh "cd ./robot-test && python3 -m robot test_plus.robot"
             }
         }
         stage("Push image ") {
+             agent {
+                    label "test"
+                }
             steps {
                 withCredentials(
                 [usernamePassword(
@@ -65,6 +75,14 @@ pipeline {
                     sh "docker rmi ${IMAGE_NAME}"
                     sh "docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                 }
+            }
+        }
+        stage("Push image ") {
+             agent {
+                    label "pre-prod"
+                }
+            steps {
+               
             }
         }
     }
