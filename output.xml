@@ -1,57 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.11.7 on darwin)" generated="2024-02-14T12:31:27.509396" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.11.7 on darwin)" generated="2024-02-17T14:08:49.236892" rpa="false" schemaversion="5">
 <suite id="s1" name="Test Plus" source="/Users/hon/Workspace/3D/Softdevinpractice/20Feb/test_plus.robot">
 <test id="s1-t1" name="Test Calculate Numbers 6 and 5 (ฺBefore Using Keywords)" line="6">
 <kw name="GET" owner="RequestsLibrary">
-<msg time="2024-02-14T12:31:27.591109" level="INFO">GET Request : url=http://127.0.0.1:8000/plus/6/5 
- path_url=/plus/6/5 
- headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg time="2024-02-14T12:31:27.591250" level="INFO">GET Response : url=http://127.0.0.1:8000/plus/6/5 
- status=200, reason=OK 
- headers={'date': 'Wed, 14 Feb 2024 05:31:27 GMT', 'server': 'uvicorn', 'content-length': '13', 'content-type': 'application/json'} 
- body={"result":11} 
- </msg>
-<msg time="2024-02-14T12:31:27.591420" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<msg time="2024-02-17T14:08:49.305993" level="FAIL">ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))</msg>
 <var>${resp}</var>
 <arg>http://127.0.0.1:8000/plus/6/5</arg>
 <doc>Sends a GET request.</doc>
-<status status="PASS" start="2024-02-14T12:31:27.575006" elapsed="0.016435"/>
+<status status="FAIL" start="2024-02-17T14:08:49.293975" elapsed="0.017975">ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))</status>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.status_code}</arg>
 <arg>${200}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2024-02-14T12:31:27.591684" elapsed="0.000609"/>
+<status status="NOT RUN" start="2024-02-17T14:08:49.312211" elapsed="0.000026"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-02-14T12:31:27.592718" level="INFO">${json_resp} = {'result': 11}</msg>
 <var>${json_resp}</var>
 <arg>${resp.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-02-14T12:31:27.592405" elapsed="0.000329"/>
+<status status="NOT RUN" start="2024-02-17T14:08:49.312338" elapsed="0.000013"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${json_resp['result']}</arg>
 <arg>${11}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2024-02-14T12:31:27.592832" elapsed="0.000418"/>
+<status status="NOT RUN" start="2024-02-17T14:08:49.312428" elapsed="0.000012"/>
 </kw>
-<status status="PASS" start="2024-02-14T12:31:27.574534" elapsed="0.018822"/>
+<status status="FAIL" start="2024-02-17T14:08:49.293504" elapsed="0.019098">ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))</status>
 </test>
-<status status="PASS" start="2024-02-14T12:31:27.510433" elapsed="0.083181"/>
+<test id="s1-t2" name="Test Calculate Numbers 6 and 5 (ฺBefore Using Keywords)" line="19">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-02-17T14:08:49.316747" level="FAIL">ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))</msg>
+<var>${resp}</var>
+<arg>http://127.0.0.1:8000/plus/8/8</arg>
+<doc>Sends a GET request.</doc>
+<status status="FAIL" start="2024-02-17T14:08:49.313107" elapsed="0.004776">ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))</status>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2024-02-17T14:08:49.318017" elapsed="0.000016"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${json_resp}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-02-17T14:08:49.318120" elapsed="0.000012"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['result']}</arg>
+<arg>${16}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2024-02-17T14:08:49.318222" elapsed="0.000020"/>
+</kw>
+<status status="FAIL" start="2024-02-17T14:08:49.312863" elapsed="0.005488">ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))</status>
+</test>
+<status status="FAIL" start="2024-02-17T14:08:49.237659" elapsed="0.080876"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Test Plus">Test Plus</stat>
+<stat pass="0" fail="2" skip="0" id="s1" name="Test Plus">Test Plus</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2024-02-17T14:08:49.312811" level="WARN">Multiple tests with name 'Test Calculate Numbers 6 and 5 (ฺBefore Using Keywords)' executed in suite 'Test Plus'.</msg>
 </errors>
 </robot>
