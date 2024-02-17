@@ -2,11 +2,12 @@ pipeline {
     agent any
     
     stages {
-        stage('Clone Simple API') {
-            steps {
-                git credentialsId: '656e0d84-f8fd-43ff-bca3-7e570bf3cc42', url: 'https://gitlab.com/softdev3430402/softdevjenkins.git'
-            }
-        }
+       stage('Clone Simple API') {
+    steps {
+        git credentialsId: 'your-credentials-id', url: 'git@gitlab.com:softdev3430402/softdevjenkins.git'
+    }
+}
+
         stage('Run Unit Test') {
             steps {
                 sh 'python3 unit_test.py'
