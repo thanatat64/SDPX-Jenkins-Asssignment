@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Simple API') {
             steps {
-                git credentialsId: '8b300df0-945d-4079-b7b6-6797256f7f30', url: 'git@gitlab.com:softdev3430402/softdevjenkins.git'
+                git clone credentialsId: '8b300df0-945d-4079-b7b6-6797256f7f30', url: 'git@gitlab.com:softdev3430402/softdevjenkins.git'
             }
         }
 
