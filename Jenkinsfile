@@ -4,37 +4,39 @@ pipeline {
     stages {
         stage('Clone Simple API') {
             steps {
-                git 'https://github.com/your-simple-api-repo.git'
+                git 'https://gitlab.com/softdev3430402/softdevjenkins.git'
             }
         }
         stage('Run Unit Test') {
             steps {
-                // Execute unit tests here
+                sh 'python3 unit_test.py'
+                // Assumes unit_test.py exists in the root directory and contains your unit tests
             }
         }
         stage('Create Images of Simple API') {
             steps {
-                // Execute Docker build to create images
+                sh 'docker build -t registry.gitlab.com/softdev3430402/softdevjenkins/simple-api-image .'
+                // Build Docker image using provided Dockerfile
             }
         }
         stage('Create Container of Simple API') {
             steps {
-                // Execute Docker run to create container
+                sh 'docker run -d -p 8080:80 --name simple-api-container registry.gitlab.com/softdev3430402/softdevjenkins/simple-api-image'
+                // Create Docker container from the built image
             }
         }
-        stage('Clone Simple API Robot') {
+          stage('Run Robot Tests') {
             steps {
-                git 'https://github.com/your-simple-api-robot.git'
+                sh 'robot test_plus.robot'
+                // Assumes test_plus.robot exists in the root directory and contains your Robot Framework tests
             }
         }
-        stage('Run Robot Test') {
+        stage('Build and Push Docker Image') {
             steps {
-                // Execute Robot test suites
-            }
-        }
-        stage('Push Images to Registry') {
-            steps {
-                // Execute Docker push to push images to registry
+                sh 'docker build -t registry.gitlab.com/softdev3430402/softdevjenkins/simple-api-image .'
+                // Build Docker image using provided Dockerfile
+                sh 'docker push registry.gitlab.com/softdev3430402/softdevjenkins/simple-api-image'
+                // Push Docker image to GitLab registry
             }
         }
     }
