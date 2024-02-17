@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    
+       environment {
+        IMAGE_NAME = "registry.gitlab.com/softdev3430402/softdevjenkins"
+    } 
     
     stages {
 
@@ -46,15 +48,22 @@ pipeline {
                 // Assumes test_plus.robot exists in the root directory and contains your Robot Framework tests
             }
         }
-        stage('Build and Push Docker Image') {
-            agent {
-                    label "test"
-                }
+        stage("Push image ") {
             steps {
-                sh 'docker build -t registry.gitlab.com/softdev3430402/softdevjenkins/simple-api-image .'
-                // Build Docker image using provided Dockerfile
-                sh 'docker push registry.gitlab.com/softdev3430402/softdevjenkins/simple-api-image'
-                // Push Docker image to GitLab registry
+                withCredentials(
+                [usernamePassword(
+                    credentialsId: "656e0d84-f8fd-43ff-bca3-7e570bf3cc42",
+                    passwordVariable: "gitlabPassword",
+                    usernameVariable: "gitlabUser"
+                )]
+            ){
+                    sh "docker login -u ${gitlabUser} -p ${gitlabPassword} registry.gitlab.com"
+                    sh "docker tag ${IMAGE_NAME} ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    sh "docker push ${IMAGE_NAME}"
+                    sh "docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    sh "docker rmi ${IMAGE_NAME}"
+                    sh "docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                }
             }
         }
     }
