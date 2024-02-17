@@ -5,8 +5,6 @@ pipeline {
     } 
     
     stages {
-
-
         stage('Run Unit Test') {
             agent {
                     label "test"
@@ -55,7 +53,7 @@ pipeline {
                 sh "cd ./robot-test && python3 -m robot test_plus.robot"
             }
         }
-        stage("Push image ") {
+        stage("Push image") {
              agent {
                     label "test"
                 }
@@ -91,7 +89,7 @@ pipeline {
             ){
                     sh "docker login -u ${gitlabUser} -p ${gitlabPassword} registry.gitlab.com"
                     sh "docker pull ${IMAGE_NAME}"
-                    sh "docker build ${IMAGE_NAME}"
+                    sh "docker build -t ${IMAGE_NAME} ." 
                     sh "docker run -d -p 8000:8000 --name simple-api-container ${IMAGE_NAME}"
         }
         }
