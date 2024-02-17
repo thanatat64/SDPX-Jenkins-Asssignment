@@ -1,85 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.11.7 on darwin)" generated="2024-02-17T14:48:19.760911" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.11.7 on darwin)" generated="2024-02-17T15:03:20.317089" rpa="false" schemaversion="5">
 <suite id="s1" name="Test Plus" source="/Users/hon/Workspace/3D/Softdevinpractice/20Feb/test_plus.robot">
 <test id="s1-t1" name="Test Calculate Numbers 6 and 5 (ฺBefore Using Keywords)" line="6">
 <kw name="GET" owner="RequestsLibrary">
-<msg time="2024-02-17T14:48:19.876992" level="INFO">GET Request : url=http://192.168.88.5:8000/plus/6/5 
+<msg time="2024-02-17T15:03:20.639003" level="INFO">GET Request : url=http://192.168.88.5:8000/plus/6/5 
  path_url=/plus/6/5 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg time="2024-02-17T14:48:19.877074" level="INFO">GET Response : url=http://192.168.88.5:8000/plus/6/5 
+<msg time="2024-02-17T15:03:20.639133" level="INFO">GET Response : url=http://192.168.88.5:8000/plus/6/5 
  status=200, reason=OK 
- headers={'date': 'Sat, 17 Feb 2024 07:48:19 GMT', 'server': 'uvicorn', 'content-length': '13', 'content-type': 'application/json'} 
+ headers={'date': 'Sat, 17 Feb 2024 08:03:19 GMT', 'server': 'uvicorn', 'content-length': '13', 'content-type': 'application/json'} 
  body={"result":11} 
  </msg>
-<msg time="2024-02-17T14:48:19.877173" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<msg time="2024-02-17T15:03:20.639302" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
 <var>${resp}</var>
 <arg>http://192.168.88.5:8000/plus/6/5</arg>
 <doc>Sends a GET request.</doc>
-<status status="PASS" start="2024-02-17T14:48:19.826540" elapsed="0.050651"/>
+<status status="PASS" start="2024-02-17T15:03:20.380936" elapsed="0.258399"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.status_code}</arg>
 <arg>${200}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2024-02-17T14:48:19.877355" elapsed="0.000549"/>
+<status status="PASS" start="2024-02-17T15:03:20.639629" elapsed="0.000738"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-02-17T14:48:19.878325" level="INFO">${json_resp} = {'result': 11}</msg>
+<msg time="2024-02-17T15:03:20.640901" level="INFO">${json_resp} = {'result': 11}</msg>
 <var>${json_resp}</var>
 <arg>${resp.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-02-17T14:48:19.878012" elapsed="0.000328"/>
+<status status="PASS" start="2024-02-17T15:03:20.640515" elapsed="0.000405"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${json_resp['result']}</arg>
 <arg>${11}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2024-02-17T14:48:19.878433" elapsed="0.000408"/>
+<status status="PASS" start="2024-02-17T15:03:20.641042" elapsed="0.000509"/>
 </kw>
-<status status="PASS" start="2024-02-17T14:48:19.826062" elapsed="0.052880"/>
+<status status="PASS" start="2024-02-17T15:03:20.380474" elapsed="0.261204"/>
 </test>
 <test id="s1-t2" name="Test Calculate Numbers 8 and 8 (ฺBefore Using Keywords)" line="19">
 <kw name="GET" owner="RequestsLibrary">
-<msg time="2024-02-17T14:48:19.939588" level="INFO">GET Request : url=http://192.168.88.5:8000/plus/8/8 
+<msg time="2024-02-17T15:03:20.657003" level="INFO">GET Request : url=http://192.168.88.5:8000/plus/8/8 
  path_url=/plus/8/8 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg time="2024-02-17T14:48:19.939649" level="INFO">GET Response : url=http://192.168.88.5:8000/plus/8/8 
+<msg time="2024-02-17T15:03:20.657069" level="INFO">GET Response : url=http://192.168.88.5:8000/plus/8/8 
  status=200, reason=OK 
- headers={'date': 'Sat, 17 Feb 2024 07:48:19 GMT', 'server': 'uvicorn', 'content-length': '13', 'content-type': 'application/json'} 
+ headers={'date': 'Sat, 17 Feb 2024 08:03:19 GMT', 'server': 'uvicorn', 'content-length': '13', 'content-type': 'application/json'} 
  body={"result":16} 
  </msg>
-<msg time="2024-02-17T14:48:19.939734" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<msg time="2024-02-17T15:03:20.657150" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
 <var>${resp}</var>
 <arg>http://192.168.88.5:8000/plus/8/8</arg>
 <doc>Sends a GET request.</doc>
-<status status="PASS" start="2024-02-17T14:48:19.879291" elapsed="0.060461"/>
+<status status="PASS" start="2024-02-17T15:03:20.642091" elapsed="0.015076"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.status_code}</arg>
 <arg>${200}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2024-02-17T14:48:19.939924" elapsed="0.000517"/>
+<status status="PASS" start="2024-02-17T15:03:20.657318" elapsed="0.000514"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-02-17T14:48:19.940837" level="INFO">${json_resp} = {'result': 16}</msg>
+<msg time="2024-02-17T15:03:20.658235" level="INFO">${json_resp} = {'result': 16}</msg>
 <var>${json_resp}</var>
 <arg>${resp.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-02-17T14:48:19.940536" elapsed="0.000317"/>
+<status status="PASS" start="2024-02-17T15:03:20.657929" elapsed="0.000321"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${json_resp['result']}</arg>
 <arg>${16}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2024-02-17T14:48:19.940954" elapsed="0.000404"/>
+<status status="PASS" start="2024-02-17T15:03:20.658354" elapsed="0.000405"/>
 </kw>
-<status status="PASS" start="2024-02-17T14:48:19.879065" elapsed="0.062384"/>
+<status status="PASS" start="2024-02-17T15:03:20.641828" elapsed="0.017026"/>
 </test>
-<status status="PASS" start="2024-02-17T14:48:19.761808" elapsed="0.179877"/>
+<status status="PASS" start="2024-02-17T15:03:20.318120" elapsed="0.340970"/>
 </suite>
 <statistics>
 <total>
