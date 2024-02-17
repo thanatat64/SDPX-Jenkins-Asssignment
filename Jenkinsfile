@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Create Images of Simple API') {
             steps {
-                sh 'sudo docker build -t docker build -t simple-api .'
+                sh 'docker build -t docker build -t simple-api .'
                 // Build Docker image using provided Dockerfile
             }
         }
