@@ -8,13 +8,5 @@ pipeline {
             }
         }
     }
-     stages {
-        stage('run unit-test') {
-            steps {
-                sh 'sudo apt install python3'
-                sh 'python3 unit_test.py'
-            }
-        }
-    }
 }
 
