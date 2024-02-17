@@ -1,10 +1,14 @@
 pipeline {
     agent any
     
+    
     stages {
 
 
         stage('Run Unit Test') {
+            agent {
+                    label "test"
+                }
             steps {
                 sh 'pip install --no-cache-dir --upgrade -r requirements.txt '
                 sh 'python3 unit_test.py'
@@ -12,6 +16,9 @@ pipeline {
             }
         }
         stage('Create Images of Simple API') {
+            agent {
+                    label "test"
+                }
             steps {
                 sh 'docker stop simple-api-container'
                 sh 'docker rm simple-api-container'
@@ -20,12 +27,18 @@ pipeline {
             }
         }
         stage('Create Container of Simple API') {
+            agent {
+                    label "test"
+                }
             steps {
                 sh 'docker run -d -p 8000:8000 --name simple-api-container simple-api'
                 // Create Docker container from the built image
             }
         }
           stage('Run Robot Tests') {
+            agent {
+                    label "test"
+                }
             steps {
                 sh 'curl http://192.168.88.1/Main_Login.asp'
                 sh 'curl http://192.168.88.5:8000/getcode'
@@ -34,6 +47,9 @@ pipeline {
             }
         }
         stage('Build and Push Docker Image') {
+            agent {
+                    label "test"
+                }
             steps {
                 sh 'docker build -t registry.gitlab.com/softdev3430402/softdevjenkins/simple-api-image .'
                 // Build Docker image using provided Dockerfile
