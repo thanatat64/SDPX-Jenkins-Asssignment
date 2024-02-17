@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Simple API') {
             steps {
-                git 'https://gitlab.com/softdev3430402/softdevjenkins.git'
+                git credentialsId: '656e0d84-f8fd-43ff-bca3-7e570bf3cc42', url: 'https://gitlab.com/softdev3430402/softdevjenkins.git'
             }
         }
         stage('Run Unit Test') {
