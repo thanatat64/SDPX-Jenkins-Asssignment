@@ -75,7 +75,7 @@ pipeline {
                 }
             }
         }
-        stage("Pull image") {
+        stage("Pull image && run container") {
              agent {
                     label "pre-prod"
                 }
