@@ -75,7 +75,7 @@ pipeline {
                 }
             }
         }
-        stage("Pull image && run container") {
+        stage("Pull image && runcontainer") {
              agent {
                     label "pre-prod"
                 }
@@ -90,6 +90,14 @@ pipeline {
                     sh "docker login -u ${gitlabUser} -p ${gitlabPassword} registry.gitlab.com"
                     sh "docker pull ${IMAGE_NAME}"
                     sh 'docker stop simple-api-container'
+        }
+        }
+    }
+    stage("runcontainer") {
+             agent {
+                    label "pre-prod"
+                }
+            steps {{
                     sh "docker run -d -p 8000:8000 ${IMAGE_NAME}"
         }
         }
