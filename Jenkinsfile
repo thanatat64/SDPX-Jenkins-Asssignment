@@ -1,7 +1,7 @@
 pipeline {
     agent any
        environment {
-        IMAGE_NAME = "registry.gitlab.com/softdev3430402/softdevjenkins"
+        IMAGE_NAME = "registry.gitlab.com/softdev3430402/softdevjenkins:simple-api-latest"
     } 
     
     stages {
@@ -66,8 +66,8 @@ pipeline {
                 )]
             ){
                     sh "docker login -u ${gitlabUser} -p ${gitlabPassword} registry.gitlab.com"
-                    sh "docker pull ${IMAGE_NAME}"
-                    sh "docker tag ${IMAGE_NAME} ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    sh "docker pull simple-api:latest}"
+                    sh "docker tag simple-api:latest ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                     sh "docker push ${IMAGE_NAME}"
                     sh "docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                     sh "docker rmi ${IMAGE_NAME}"
@@ -89,6 +89,7 @@ pipeline {
             ){
                     sh "docker login -u ${gitlabUser} -p ${gitlabPassword} registry.gitlab.com"
                     sh "docker pull ${IMAGE_NAME}"
+                    sh 'docker stop simple-api-container'
         }
         }
     }
@@ -97,7 +98,7 @@ pipeline {
                     label "pre-prod"
                 }
             steps {
-                    sh "docker run -d -p 8000:80 ${IMAGE_NAME}"
+                 sh "docker run -d -p 8000:8000 ${IMAGE_NAME}"
         }
     }
 }
