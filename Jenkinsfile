@@ -98,7 +98,7 @@ pipeline {
                     label "pre-prod"
                 }
             steps {
-                    sh "docker run -d -p 8000:8000 ${IMAGE_NAME}"
+                    sh "docker run -d -p 8000:80 ${IMAGE_NAME}"
         }
     }
 }
