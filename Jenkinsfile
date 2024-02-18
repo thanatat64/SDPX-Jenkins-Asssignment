@@ -1,7 +1,7 @@
 pipeline {
     agent any
        environment {
-        IMAGE_NAME = "registry.gitlab.com/softdev3430402/softdevjenkins:simple-api-latest"
+        IMAGE_NAME = "registry.gitlab.com/softdev3430402/softdevjenkins"
     } 
     
     stages {
@@ -67,9 +67,11 @@ pipeline {
             ){
                     sh "docker login -u ${gitlabUser} -p ${gitlabPassword} registry.gitlab.com"
                     sh "docker pull ${IMAGE_NAME}"
-                    sh "docker tag ${IMAGE_NAME} ${IMAGE_NAME}"
+                    sh "docker tag ${IMAGE_NAME} ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                     sh "docker push ${IMAGE_NAME}"
+                    sh "docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                     sh "docker rmi ${IMAGE_NAME}"
+                    sh "docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                 }
             }
         }
