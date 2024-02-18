@@ -69,9 +69,9 @@ pipeline {
                     sh "docker pull ${IMAGE_NAME}"
                     sh "docker tag ${IMAGE_NAME} ${IMAGE_NAME}"
                     sh "docker push ${IMAGE_NAME}"
-                    sh "docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    sh "docker push ${IMAGE_NAME}"
                     sh "docker rmi ${IMAGE_NAME}"
-                    sh "docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    sh "docker rmi ${IMAGE_NAME}"
                 }
             }
         }
