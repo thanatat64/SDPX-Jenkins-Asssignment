@@ -97,8 +97,9 @@ pipeline {
                     label "pre-prod"
                 }
             steps {
-                    sh "docker stop ${IMAGE_NAME}"
-                    sh "docker run -d -p 8000:8000 ${IMAGE_NAME}"
+                    sh "docker stop simple-api-container02"
+                    sh "docker rm simple-api-container02"
+                    sh "docker run -d -p 8000:8000 --name simple-api-container02 ${IMAGE_NAME}"
         }
     }
 }
