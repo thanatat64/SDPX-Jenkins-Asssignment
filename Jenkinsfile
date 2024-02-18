@@ -89,7 +89,6 @@ pipeline {
             ){
                     sh "docker login -u ${gitlabUser} -p ${gitlabPassword} registry.gitlab.com"
                     sh "docker pull ${IMAGE_NAME}"
-                    sh 'docker stop simple-api-container'
         }
         }
     }
