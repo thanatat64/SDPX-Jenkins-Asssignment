@@ -66,7 +66,7 @@ pipeline {
                 )]
             ){
                     sh "docker login -u ${gitlabUser} -p ${gitlabPassword} registry.gitlab.com"
-                    sh "docker pull simple-api:latest}"
+                    sh "docker pull simple-api:latest"
                     sh "docker tag simple-api:latest ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                     sh "docker push ${IMAGE_NAME}"
                     sh "docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}"
