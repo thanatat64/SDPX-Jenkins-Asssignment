@@ -1,7 +1,7 @@
 pipeline {
     agent any
        environment {
-        IMAGE_NAME = "registry.gitlab.com/softdev3430402/softdevjenkins"
+        IMAGE_NAME = "registry.gitlab.com/kmitl2/softdevjenkins"
     } 
     
     stages {
