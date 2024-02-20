@@ -77,7 +77,7 @@ pipeline {
         }
         stage('Pull image && runcontainer') {
             agent {
-                    label 'pre-prod'
+                    label 'preprod'
             }
             steps {
                 withCredentials(
@@ -94,7 +94,7 @@ pipeline {
         }
         stage('runcontainer') {
             agent {
-                    label 'pre-prod'
+                    label 'preprod'
             }
             steps {
                     sh 'docker stop simple-api-container02'
