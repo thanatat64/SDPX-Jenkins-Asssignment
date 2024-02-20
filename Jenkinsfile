@@ -40,7 +40,7 @@ pipeline {
             agent { label 'test' }
             steps {
                 dir('./robot-test/') {
-                    git branch: 'main', credentialsId: 'tnt', url: 'git@github.com:thanatat64/SDPX-Robot-Assignment.git'
+                    git branch: 'main', credentialsId: 'tnt', url: 'https://github.com/thanatat64/SDPX-Robot-Assignment.git'
                 }
                 echo 'clone done!'
             }
