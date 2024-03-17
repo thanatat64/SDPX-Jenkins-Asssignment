@@ -4,7 +4,7 @@ app = FastAPI()
 
 @app.get("/getcode")
 async def root():
-    return {"message": "test final exam"}
+    return {"message": "test git pull naja"}
 
 @app.get("/is_prime/{x}")
 async def prime(x:int):
